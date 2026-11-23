@@ -1,0 +1,2 @@
+# run dev version of bqn with assumption that its in an adjacent folder from this project
+../CBQN/bqn src/rr.bqn $@
