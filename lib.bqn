@@ -51,6 +51,7 @@ code⇐{
   Cube ⇐ { 16++´36‿6‿1×𝕩 }
 }
 
+# modified copy from bqn src/f.bqn
 F⇐{
   ⟨Type,Decomp,FF,FN⟩←𝕩
   ReprAtom ← <⟜@◶⟨@⊸≠◶⟨"@","'"⊸(∾∾⊣)⟩,FN⟩
@@ -67,7 +68,7 @@ F⇐{
     p ← PadCount 1 ⌈ ls ← ¯1↓≢𝕩
     # If 𝕩 has cells, pad by selection; if it's empty, there are only
     # pads but selection would try to get cells (1⌈ above), so overtake.
-    Pad ← {(»⊸<⊸×/0∾1+𝕨) ⊏ ' '¨∘⊏⊸∾𝕩}
+    Pad ← {(»⊸<⊸×/0∾1+𝕨) ⊏ ' '¨∘⊏⊸∾𝕩} # AQ: pad vertical
     p (0<≠∘⊢)◶⟨+´⊸↑,Pad⟩ ((×´ls)∾¯1↑≢𝕩) ⥊ 𝕩
   }⍟(2 < =)
   PadVMixed ← {
@@ -97,7 +98,7 @@ F⇐{
 
   _paddingJoin ← {  # 𝕗 is 1 to left align and ¯1 to right align
     s ← ≢¨ 𝕩
-    w ← (0<=)◶⟨⥊,⌈˝⍟(=-1˙)⟩1⊑¨s
+    w ← 0¨(0<=)◶⟨⥊,⌈˝⍟(=-1˙)⟩1⊑¨s #AQ change here for width block padding 0¨
     h ← ⌈˝⎉1⍟(0<=) ⊑¨s
     o ← <∘∾⎉2 ≍⍟(0⌈2-=) (h ⋈⌜ 𝕗×w¬(-𝕗×≠w)↑1) ↑¨ 𝕩
     2 PadH (1⊸⌽⊸≡⥊h)◶⟨PadVMixed,PadV∘>⟩ o
@@ -106,6 +107,7 @@ F⇐{
   _fmtMixedP ← {
     r ← =𝕩
     Join ← r Enframe 𝕗 _paddingJoin
+
     𝕨 (∨´<⟜∞)◶(Join <⊸(Fmt¨))‿{
       p ← ⟨r>1,2⟩  # Outer padding
       o ← ¯1((0+⌜´(1(1+×)`⊢)⌾⌽×↕¨)∘↓⋈⌜2×↕∘⊑)≢𝕩  # Offset

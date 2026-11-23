@@ -7,11 +7,10 @@ gl←⟨
   "∘○⊸⟜⌾⊘◶⎉⚇⍟⎊"
 ⟩
 
-•SHOW 
-
 # max 
 Repr←{𝕊:
   ⋈1⊑shade
+  #•Fmt 𝕩
 }
 Fmt‿· ← F ⟨
   •Type
@@ -20,7 +19,6 @@ Fmt‿· ← F ⟨
   Repr                        # Format number
 ⟩
 
-
-•Show 3‿3‿3⥊↕10
-•Out Fmt 3‿3‿3⥊↕10
+z←2‿2‿3‿9⥊↕10
+•Out Fmt z
 •Out rs
