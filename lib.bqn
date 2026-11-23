@@ -65,7 +65,7 @@ F⇐{
   }
   PadV ← {
     # Leading shape and padding count
-    p ← PadCount 1 ⌈ ls ← ¯1↓≢𝕩
+    p ← 1⌊PadCount 1 ⌈ ls ← ¯1↓≢𝕩
     # If 𝕩 has cells, pad by selection; if it's empty, there are only
     # pads but selection would try to get cells (1⌈ above), so overtake.
     Pad ← {(»⊸<⊸×/0∾1+𝕨) ⊏ ' '¨∘⊏⊸∾𝕩} # AQ: pad vertical
@@ -98,9 +98,9 @@ F⇐{
 
   _paddingJoin ← {  # 𝕗 is 1 to left align and ¯1 to right align
     s ← ≢¨ 𝕩
-    w ← 0¨(0<=)◶⟨⥊,⌈˝⍟(=-1˙)⟩1⊑¨s #AQ change here for width block padding 0¨
+    w ← (0<=)◶⟨⥊,⌈˝⍟(=-1˙)⟩1⊑¨s 
     h ← ⌈˝⎉1⍟(0<=) ⊑¨s
-    o ← <∘∾⎉2 ≍⍟(0⌈2-=) (h ⋈⌜ 𝕗×w¬(-𝕗×≠w)↑1) ↑¨ 𝕩
+    o ← <∘∾⎉2 ≍⍟(0⌈2-=) (h ⋈⌜ 𝕗×w) ↑¨ 𝕩
     2 PadH (1⊸⌽⊸≡⥊h)◶⟨PadVMixed,PadV∘>⟩ o
   }
 
