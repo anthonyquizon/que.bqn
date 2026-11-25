@@ -1,3 +1,3 @@
-# eh.bqn?
+# ¿qué.bqn?
 
 
